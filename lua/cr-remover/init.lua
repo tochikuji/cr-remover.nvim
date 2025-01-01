@@ -12,12 +12,10 @@ local function remove_carriage_returns()
     local modified = false
 
     for i, line in ipairs(lines) do
-        if line:match("%S") then
-            local new_line = line:gsub("\r+$", "")
-            if new_line ~= line then
-                lines[i] = new_line
-                modified = true
-            end
+        local new_line = line:gsub("\r", "")
+        if new_line ~= line then
+            lines[i] = new_line
+            modified = true
         end
     end
 
@@ -45,12 +43,10 @@ local function remove_cr_in_region(start_line, end_line)
     local modified = false
 
     for i, line in ipairs(lines) do
-        if line:match("%S") then
-            local new_line = line:gsub("\r+$", "")
-            if new_line ~= line then
-                lines[i] = new_line
-                modified = true
-            end
+        local new_line = line:gsub("\r", "")
+        if new_line ~= line then
+            lines[i] = new_line
+            modified = true
         end
     end
 
