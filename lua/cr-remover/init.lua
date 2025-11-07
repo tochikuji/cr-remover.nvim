@@ -104,6 +104,16 @@ function M.setup(opts)
                 end
             end,
         })
+
+        -- Clean entire buffer when leaving insert mode (e.g., after pasting in a new buffer)
+        vim.api.nvim_create_autocmd("InsertLeave", {
+            group = augroup,
+            callback = function()
+                if should_process() then
+                    remove_carriage_returns()
+                end
+            end,
+        })
     end
 end
 
